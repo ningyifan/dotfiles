@@ -4,7 +4,7 @@ DOTFILES_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )/.." && pwd )"
 
 echo "Setting up from $DOTFILES_DIR ..."
 
-export HIVE_VERSION=2.1.0
+export HIVE_VERSION=3.0.0
 
 [ ! -d /usr/local/Cellar/hive/$HIVE_VERSION/ ] && brew install hive
 [ ! -d /usr/local/Cellar/hive/$HIVE_VERSION/ ] && { echo "Can't find Hive installation in /usr/local/Cellar/hive/$HIVE_VERSION, run 'brew install hive' first." ; exit 1; }
@@ -23,6 +23,6 @@ touch hcatalog/var/log/hcat.out
 
 ln -f -s $DOTFILES_DIR/hive/conf/hive-site.xml $HIVE_HOME/libexec/conf/hive-site.xml
 
-schematool -initSchema -dbType derby
+schematool -initSchema -dbType mysql
 
 echo "Done."
